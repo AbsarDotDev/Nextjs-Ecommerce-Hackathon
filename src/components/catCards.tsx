@@ -2,7 +2,27 @@ import Image from "next/image";
 import HeroPoster from "/src/assets/images/Card1.png";
 import Link from "next/link";
 
-const CategoryCards = () => {
+const getData = async () => {
+  try {
+      const res = await fetch("http://127.0.0.1:3000/api/category", {
+          method: "GET",
+          cache: "no-store",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      });
+      if (!res.ok) {
+          throw new Error("Failed to fetch the data")
+      };
+      const result = await res.json()
+      return result
+  } catch (err) {
+      console.log(err)
+  }
+}
+
+
+const CategoryCards = () => {   
   return (
       <section className="px-20">
         <div>

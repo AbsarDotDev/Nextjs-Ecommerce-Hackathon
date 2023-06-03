@@ -10,6 +10,7 @@ export default function Home() {
     <div>
       <Header/>
       <HeroSection/>
+      {/*@ts-ignore */}
       <CategoryCards/>
       <TwoColumnComponent/>
       {/*@ts-ignore */}
