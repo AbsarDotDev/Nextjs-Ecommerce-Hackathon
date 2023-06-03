@@ -22,7 +22,7 @@ const Footer = async () => {
           <div className="flex flex-col mb-6 md:mb-0 w-{100%] lg:w-[30%]">
             <div>
               <Image src="/Logo.svg" className="ml-2" width={80} height={80} alt="Logo" />
-              <p className="text-left text-sm my-4">Dribbble is the world’s leading community for creatives to share, grow, and get hired.</p>
+              <p className="text-left text-sm my-4">ScrwedUpArtist is the world’s leading community for creatives to share, grow, and get hired.</p>
               </div>
               <div className="flex space-x-5 mt-2 lg:mb-0">
               <FontAwesomeIcon icon={faDribbble} className='w-5 '/>
@@ -54,11 +54,9 @@ const Footer = async () => {
               <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Categories</h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
-                      <li className="mb-4">
                       {data.map((item:categoryProps) => (
        <Link href="@/catagory/{item.name}"><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
       ))}
-                      </li>
                   </ul>
               </div>
               <div>
