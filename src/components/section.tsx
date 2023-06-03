@@ -20,7 +20,7 @@ const TwoColumnComponent = () => {
                 </div>
             </div>
 
-            <div className="flex flex-wrap px-[120px] mt-10 mb-10">
+            <div className="flex flex-row px-[120px] mt-10 mb-10">
 
                 <div className="w-full lg:w-1/2 md:w-1/2 flex pl-8 items-center">
                     <div>

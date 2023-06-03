@@ -19,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <head><link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
 </head>
-      <body className={inter.className}>      <Header/>
-{children}      <Footer/>
+
+      <body className={inter.className}> 
+{children}    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js" async></script>
+
 </body>
     </html>
   )
