@@ -2,6 +2,7 @@ import Image from "next/image";
 import HeroPoster from "/src/assets/images/Card1.png";
 import Link from "next/link";
 
+
 const getData = async () => {
   try {
       const res = await fetch("http://127.0.0.1:3000/api/category", {
@@ -23,6 +24,10 @@ const getData = async () => {
 
 
 const CategoryCards = () => {   
+
+
+
+
   return (
       <section className="px-20">
         <div>
