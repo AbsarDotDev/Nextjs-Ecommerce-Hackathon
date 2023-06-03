@@ -1,86 +1,87 @@
+import 'flowbite';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook , faTwitter , faInstagram,faPinterest} from '@fortawesome/free-brands-svg-icons';
+import { faFacebook , faTwitter , faInstagram,faPinterest, faDribbble} from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
+import { client } from '@/app/lib/sanityClient';
 
-const Footer = () => {
+export const getCategoriesData = async () =>{ 
+  const res = await client.fetch(`*[_type=="category"]{name}`);
+  return res
+}
+interface categoryProps{
+name:string
+}
+const Footer = async () => {
+  const data = await getCategoriesData()
     return (<>
-      <footer className="bg-gradient-to-b from-primary-blue to-gray-400 text-white py-6">
-        <div className="container mx-auto py-8">
-          <div className="flex flex-row gap-8">
-            {/* Column 1 */}
-            <div className="flex flex-col w-[30%] ml-8">
-            <Image src="/logoR.png" alt="Logo" width={130} height={80} className=''/>
+      
+<footer className="px-8 bg-gray-200">
+    <div className="mx-auto w-full max-w-screen-6xl p-4 py-6 lg:py-8 ">
+        <div className="md:flex md:justify-start gap-x-20 ">
+          <div className="flex flex-col mb-6 md:mb-0 w-{100%] lg:w-[30%]">
+            <div>
+              <Image src="/Logo.svg" className="ml-2" width={80} height={80} alt="Logo" />
               <p className="text-left text-sm my-4">Dribbble is the world’s leading community for creatives to share, grow, and get hired.</p>
-              <div className="flex space-x-3 ml-1">
-                  <FontAwesomeIcon icon={faFacebook} className='w-6'/>
+              </div>
+              <div className="flex space-x-5 mt-2 lg:mb-0">
+              <FontAwesomeIcon icon={faDribbble} className='w-5 '/>
+                  <FontAwesomeIcon icon={faFacebook} className='w-5 '/>
+                 
+                  <FontAwesomeIcon icon={faTwitter} className='w-5'/>
                 
-                  <FontAwesomeIcon icon={faTwitter} className='w-6'/>
-                
-                  <FontAwesomeIcon icon={faInstagram} className='w-6'/>
+                  <FontAwesomeIcon icon={faInstagram} className='w-5'/>
 
-                  <FontAwesomeIcon icon={faPinterest}  className='w-6'/>
+                  <FontAwesomeIcon icon={faPinterest}  className='w-5'/>
                 
               </div>
-            </div>
-  
-            {/* Column 2 */}
-            <div className='w-[20%] ml-4'>
-              <h4 className="text-lg font-bold mb-4">Pages</h4>
-              <ul className="space-y-3">
-        <li>
-          <Link href="#" className="hover:text-primary-red">Shop</Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-primary-red text-[17px]">Photos</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">Illustrations</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">Vectors</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">3D Assets</Link>
-          </li>
-        </ul>
-            </div>
-  
-            {/* Column 3 (same as Column 2) */}
-            <div className='w-[20%]'>
-              <h4 className="text-lg font-bold mb-4">Links</h4>
-              <ul className="space-y-3">
-        <li>
-          <Link href="#" className="hover:text-primary-red">Blog</Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-primary-red text-[17px]">Privacy Policy</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">Support</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">License Terms</Link>
-          </li>
-          <li>
-          <Link href="#" className="hover:text-primary-red text-[17px]">Go Pro!</Link>
-          </li>
-        </ul>
-            </div>
-  
-            {/* Column 4 */}
-            <div className='w-[30%]'>
-              <h4 className="text-lg font-bold mb-4">Contact Details</h4>
-              <p>Address: 123 Example Street</p>
-              <p>Phone: +1 234 5678</p>
-              <p>Email: example@example.com</p>
-            </div>
           </div>
-        </div>
-      </footer>
-      <div className='w-[100%] bg-primary-red items-center'>
-          <p className='text-white py-4 text-center'>© 2023 Dribble. All Rights Reserved</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3  w-{100%] lg:w-[70%]">
+              <div>
+                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Pages</h2>
+                  <ul className="text-gray-600 font-medium">
+                      <li className="">
+                          <Link href="https://flowbite.com/" className="hover:underline hover:text-primary-pink">Shop</Link>
+                      </li>
+                      <li className="py-4">
+                          <Link href="https://tailwindcss.com/" className="hover:underline hover:text-primary-pink">About</Link>
+                      </li>
+                      <li>
+                          <Link href="https://tailwindcss.com/" className="hover:underline hover:text-primary-pink">Contact</Link>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Categories</h2>
+                  <ul className="text-gray-600 dark:text-gray-400 font-medium">
+                      <li className="mb-4">
+                      {data.map((item:categoryProps) => (
+       <Link href="@/catagory/{item.name}"><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
+      ))}
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase mt-6 lg:mt-0">Legal</h2>
+                  <ul className="text-gray-600 dark:text-gray-400 font-medium">
+                      <li className="mb-4">
+                          <Link href="#" className="hover:underline hover:text-primary-pink">Privacy Policy</Link>
+                      </li>
+                      <li>
+                          <Link href="#" className="hover:underline hover:text-primary-pink">Terms &amp; Conditions</Link>
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
+      <hr className="my-6 border-gray-200 sm:mx-autolg:my-8" />
+      <div className="items-center bg-primary-pink">
+          <p className="text-sm text-gray-900 text-center">© 2023 <Link href="https://flowbite.com/" className="hover:underline">Flowbite™</Link>. All Rights Reserved.
+          </p>
+      </div>
+    </div>
+</footer>
+
       </>
     );
   };

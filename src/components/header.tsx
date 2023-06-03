@@ -1,9 +1,10 @@
+import 'flowbite';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { } from '@fortawesome/free-regular-svg-icons';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import 'flowbite';
+
 
 
 const Header = () => {

@@ -8,9 +8,12 @@ import TwoColumnComponent from '../components/section'
 export default function Home() {
   return (
     <div>
+      <Header/>
       <HeroSection/>
       <CategoryCards/>
       <TwoColumnComponent/>
+      {/*@ts-ignore */}
+      <Footer/>
     </div>
   )
 }
