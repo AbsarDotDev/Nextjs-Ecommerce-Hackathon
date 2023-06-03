@@ -17,13 +17,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head><link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
-      </head>
-      <body className={inter.className}>      <Header />
-        {children}
-        <Footer />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-      </body>
+
+      <head><link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
+</head>
+
+      <body className={inter.className}> 
+{children}    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js" async></script>
+
+</body>
     </html>
   )
 }
