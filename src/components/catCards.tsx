@@ -2,7 +2,9 @@ import Image from "next/image";
 import HeroPoster from "/src/assets/images/Card1.png";
 import Link from "next/link";
 
+
 const CategoryCards = () => {
+
   return (
       <section className="px-20">
         <div>
