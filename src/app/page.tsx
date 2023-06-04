@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import CategoryCards from '../components/category_cards'
 import Footer from '../components/footer'
@@ -9,7 +10,6 @@ import ProductCard from '@/components/single_product'
 export default function Home() {
   return (
     <div>
- 
       <Header/>
       <HeroSection/>
       {/* Category Section */}
@@ -59,7 +59,7 @@ export default function Home() {
         </section>
       <TwoColumnComponent/>
       {/*@ts-ignore */}
-      <Footer/>
+      <Footer />
 
     </div>
   )
