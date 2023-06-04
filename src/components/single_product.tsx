@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import Image  from 'next/image'
 import { IProduct } from '@/app/shop/[category]/page';
+import { urlForImage } from '@/lib/image';
 
 interface ProductCardsProps {
     product: IProduct;
@@ -11,7 +12,7 @@ interface ProductCardsProps {
              <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     {/* Product Image */}
                     <a href="#">
-                        <Image className="p-8 rounded-t-lg" src="/card1.jpg" width={'500'} height={'400'} alt="product image" />
+                        <Image className="p-8 rounded-t-lg" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
                     </a>
                     <div className="px-5 pb-5">
                         {/* Product Title */}
