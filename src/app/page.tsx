@@ -21,7 +21,12 @@ export interface ICat {
   name: string,
   image: IImage
 }
-
+export interface ICategory {
+  _id: string,
+  name: string,
+  description:string,
+  image: IImage
+}
 // export const getPro = async () => {
 //   const res = await client.fetch(`*[_type == 'category'] | order(_random) [0...4]`);
 //   return res;
@@ -35,6 +40,7 @@ export interface ICat {
 
 export default async function Home() {
   const data: ICat[] = await getCat();
+
 
   return (
     <div>
