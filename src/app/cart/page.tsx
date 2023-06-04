@@ -1,7 +1,7 @@
-'use client'
 import React from "react";
 import Image from "next/image";
-import CartProductLayout from "./cart_product";
+import CartProductLayout from "@/components/cart_product";
+
 
 const Cart = () => {
     return (
@@ -24,6 +24,7 @@ const Cart = () => {
 
                         <CartProductLayout />
 
+                        <CartProductLayout />
 
                         <a href="#" className="flex font-semibold text-indigo-600 text-sm mt-10">
 
