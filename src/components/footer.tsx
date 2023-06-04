@@ -13,7 +13,7 @@ name:string
 }
 const Footer = async () => {
   const data = await getCategoriesData()
-    return (<>
+    return (<div>
       
 <footer className="bg-gray-200">
     <div className="px-8 mx-auto w-full max-w-screen-6xl p-4 py-6 lg:py-8 ">
@@ -40,7 +40,7 @@ const Footer = async () => {
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Pages</h2>
                   <ul className="text-gray-600 font-medium">
                       <li className="">
-                          <Link href="https://flowbite.com/" className="hover:underline hover:text-primary-pink">Shop</Link>
+                          <Link href="../../shop" className="hover:underline hover:text-primary-pink">Shop</Link>
                       </li>
                       <li className="py-4">
                           <Link href="https://tailwindcss.com/" className="hover:underline hover:text-primary-pink">About</Link>
@@ -78,7 +78,7 @@ const Footer = async () => {
       </div>
 </footer>
 
-      </>
+      </div>
     );
   };
   

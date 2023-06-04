@@ -6,7 +6,22 @@ import HeroSection from '../components/hero'
 import TwoColumnComponent from '../components/section'
 import SingleProduct from '@/components/single_product'
 import ProductCard from '@/components/single_product'
-export default function Home() {
+import {client} from '@/lib/client'
+import { Image as IImage} from 'sanity'
+export const getCategories =async()=> {
+   const res=await client.fetch("*[_type == 'category'] | order(_random) [0...4]");
+   return res;
+}
+export interface ICategory{
+  _id:string,
+  name:string,
+  description:string,
+  image:IImage
+}
+export default async function Home() {
+  const categories:ICategory[]=await getCategories();
+  // console.log(categories.length)
+  // console.log(categories[0])
   return (
     <div>
  
@@ -26,10 +41,10 @@ export default function Home() {
         </h5>
       </div>
       <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] justify-between">
-        <CategoryCards/>
-        <CategoryCards/>
-        <CategoryCards/>
-        <CategoryCards/>
+       {/* {categories.map(
+         (item:any)=>{  return (<CategoryCards category={item} key={item._id}/>)     }
+       )} */}
+
  
       </div>
 
@@ -42,10 +57,7 @@ export default function Home() {
                 Best Selling
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<ProductCard/>
-<ProductCard/>
-<ProductCard/>
-<ProductCard/>
+
 
             </div>
             <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
