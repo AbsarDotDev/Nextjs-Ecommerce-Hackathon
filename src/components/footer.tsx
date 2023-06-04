@@ -1,4 +1,3 @@
-import 'flowbite';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook , faTwitter , faInstagram,faPinterest, faDribbble} from '@fortawesome/free-brands-svg-icons';
@@ -55,7 +54,7 @@ const Footer = async () => {
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Categories</h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                       {data.map((item:categoryProps) => (
-       <Link href="@/catagory/{item.name}"><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
+       <Link href="@/app/category/{item.name}" key={item.name}><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
       ))}
                   </ul>
               </div>
@@ -84,4 +83,3 @@ const Footer = async () => {
   };
   
   export default Footer;
-  
