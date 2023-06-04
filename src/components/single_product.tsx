@@ -1,17 +1,23 @@
 import Link from 'next/link'
 import React from 'react'
 import Image  from 'next/image'
- const ProductCard=()=>{
+import { IProduct } from '@/app/shop/[category]/page';
+import { urlForImage } from '@/lib/image';
+
+interface ProductCardsProps {
+    product: IProduct;
+  }
+ const ProductCard=({ product }: ProductCardsProps)=>{
     return (
              <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     {/* Product Image */}
                     <a href="#">
-                        <Image className="p-8 rounded-t-lg" src="/card1.jpg" width={'500'} height={'400'} alt="product image" />
+                        <Image className="p-8 rounded-t-lg" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
                     </a>
                     <div className="px-5 pb-5">
                         {/* Product Title */}
                         <a href="#">
-                            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</h5>
+                            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{product.title}</h5>
                         </a>
                         {/* Rating */}
                         <div className="flex items-center mt-2.5 mb-5">
@@ -21,8 +27,8 @@ import Image  from 'next/image'
                             <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">5.0</span>
                         </div>
                         <div className="flex items-center justify-between">
-                            {/* Price */}
-                            <span className="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                            {/*@ts-ignore */}
+                            <h6 className="text-xl font-semibold text-gray-900 dark:text-white">${product.price} </h6>
                             {/* Add to Cart Button */}
                             <a href="#" className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                         </div>
