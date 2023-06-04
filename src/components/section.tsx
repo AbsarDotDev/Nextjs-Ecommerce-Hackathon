@@ -10,7 +10,7 @@ const TwoColumnComponent = () => {
                     <div>
                         <h1 className="text-2xl font-bold lg:mb-4 md:mb-0">On Demand Art</h1>
                         <p className="text-gray-700 text-left">
-                            Offering customized artwork tailored to your <br /> specific needs and preferences. Whether you're  <br /> looking for illustrations, paintings, or digital designs, <br /> bring to your vision life.
+                            Offering customized artwork tailored to your <br /> specific needs and preferences. Whether you{'"'}re  <br /> looking for illustrations, paintings, or digital designs, <br /> bring to your vision life.
                         </p>
                     </div>
                 </div>

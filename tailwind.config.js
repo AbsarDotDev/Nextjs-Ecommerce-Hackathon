@@ -8,6 +8,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       colors: {
       primary:{
         pink:'#ee245f',
