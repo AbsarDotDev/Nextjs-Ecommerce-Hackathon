@@ -1,3 +1,4 @@
+import Cart from '@/components/cart'
 import CategoryCards from '../components/catCards'
 import Footer from '../components/footer'
 import Header from '../components/header'
@@ -7,15 +8,16 @@ import SingleProduct from '@/components/single_product'
 export default function Home() {
   return (
     <div>
- 
-      <Header/>
-      <HeroSection/>
+
+      <Header />
+      <HeroSection />
       {/*@ts-ignore */}
-      <CategoryCards/>
-    <SingleProduct />
-      <TwoColumnComponent/>
+      <CategoryCards />
+      <SingleProduct />
+      <TwoColumnComponent />
+      <Cart />
       {/*@ts-ignore */}
-      <Footer/>
+      <Footer />
 
     </div>
   )
