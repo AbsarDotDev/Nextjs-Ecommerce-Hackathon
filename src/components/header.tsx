@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import CartPopOver from './cartPopover';
+import CartPopOver from './cart_icon';
 
 const Header = () => {
   return (
 
     <nav className="bg-white border-gray-200">      
-      <div className="px-5 lg:px-10max-w-screen-6xl flex flex-wrap items-center justify-between w-full">
+      <div className="px-5 lg:px-10 max-w-screen-6xl flex flex-wrap items-center justify-between w-full">
         <div className='flex flex-row gap-x-10 items-center'>
       <Link href="#" className="flex items-center">
           <Image src="/Logo.svg" className="" width={70} height={80} alt="Logo" />

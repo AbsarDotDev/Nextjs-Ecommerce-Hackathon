@@ -1,4 +1,3 @@
-import 'flowbite';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook , faTwitter , faInstagram,faPinterest, faDribbble} from '@fortawesome/free-brands-svg-icons';
@@ -16,8 +15,8 @@ const Footer = async () => {
   const data = await getCategoriesData()
     return (<>
       
-<footer className="px-8 bg-gray-200">
-    <div className="mx-auto w-full max-w-screen-6xl p-4 py-6 lg:py-8 ">
+<footer className="bg-gray-200">
+    <div className="px-8 mx-auto w-full max-w-screen-6xl p-4 py-6 lg:py-8 ">
         <div className="md:flex md:justify-start gap-x-20 ">
           <div className="flex flex-col mb-6 md:mb-0 w-{100%] lg:w-[30%]">
             <div>
@@ -55,7 +54,7 @@ const Footer = async () => {
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Categories</h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                       {data.map((item:categoryProps) => (
-       <Link href="@/catagory/{item.name}"><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
+       <Link href="@/app/category/{item.name}" key={item.name}><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
       ))}
                   </ul>
               </div>
@@ -71,13 +70,12 @@ const Footer = async () => {
                   </ul>
               </div>
           </div>
-      </div>
-      <hr className="my-6 border-gray-200 sm:mx-autolg:my-8" />
-      <div className="items-center bg-primary-pink">
-          <p className="text-sm text-gray-900 text-center">© 2023 <Link href="https://flowbite.com/" className="hover:underline">Flowbite™</Link>. All Rights Reserved.
+      </div>    
+    </div>
+    <div className="items-center border-t-[3px] border-gray-800 border-b-[3px] border-gray-800 bg-primary-pink">
+          <p className="text-sm py-5 text-white text-center">© 2023 <Link href="https://flowbite.com/" className="hover:underline">Flowbite™</Link>. All Rights Reserved.
           </p>
       </div>
-    </div>
 </footer>
 
       </>
@@ -85,4 +83,3 @@ const Footer = async () => {
   };
   
   export default Footer;
-  
