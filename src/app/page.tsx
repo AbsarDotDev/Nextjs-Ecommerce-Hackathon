@@ -35,6 +35,7 @@ export interface ICat {
 
 export default async function Home() {
   const data: ICat[] = await getCat();
+
   return (
     <div>
       <Header />
@@ -63,15 +64,13 @@ export default async function Home() {
       </section>
       {/* Best Selling Section */}
       <section className='best-selling mt-20'>
-        <div className='px-20 pt-20 flex flex-col items-start'>
-          <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
-            Best Selling
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+
+      <div className='px-20 pt-20 flex flex-col items-start'>
+            <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
+                Best Selling
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
 
           </div>
           <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
