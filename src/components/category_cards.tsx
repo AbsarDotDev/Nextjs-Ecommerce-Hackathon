@@ -1,9 +1,10 @@
 import Image from "next/image";
 import HeroPoster from "/src/assets/images/Card1.png";
 import Link from "next/link";
+
 import { ICategory } from "@/app/page";
 import { urlForImage } from "@/lib/image";
-urlForImage
+
 interface CategoryCardsProps {
   category: ICategory;
 }
