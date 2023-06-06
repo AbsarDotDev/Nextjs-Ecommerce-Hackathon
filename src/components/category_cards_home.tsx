@@ -28,7 +28,7 @@ const CategoryCardsHome = ({ category }: CategoryCardsProps) => {
           onMouseLeave={handleMouseLeave}
         >
           <Image
-            className="bg-white p-1 object-cover h-[400px]"
+            className="bg-white p-1 object-cover h-[500px] w-full"
             src={urlForImage(category.image).url()}
             width={500}
             height={300}

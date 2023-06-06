@@ -19,7 +19,7 @@ export const getCat = async () => {
 }
 
 export const getPro = async () => {
-  const res = await client.fetch(`*[_type == 'product'] | order(_random) [0...8]`);
+  const res = await client.fetch(`*[_type == 'product'] | order(_random) [0...5]`);
   return res;
 }
 
@@ -99,13 +99,12 @@ export default async function Home() {
 
 
       {/* Best Selling Section */}
-      <section className='best-selling mt-20'>
+      <section className='px-20 best-selling mt-20 max-w-screen-6xl w-full'>
 
-        <div className='px-20 pt-20 flex flex-col items-start'>
-          <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
+          <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
             Best Selling
           </h3>
-          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] gap-x-5 justify-between">
+          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-3 justify-between">
             {pro_data.map((item: any, index: number) => {
               const catItem = cat.find((catItem) => catItem._id === item.category._ref);
               const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
@@ -123,7 +122,6 @@ export default async function Home() {
               View All
             </Link>
           </button>
-        </div>
       </section>
       <div className='px-20'>
         <Features />
