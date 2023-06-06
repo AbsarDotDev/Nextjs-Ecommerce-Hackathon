@@ -11,7 +11,6 @@ import Customer_Feedback from '@/components/feedback'
 
 
 import ProductCardHome from '@/components/single_product_home'
-import { ICategory } from './shop/page'
 
 export const getCat = async () => {
   const res = await client.fetch(`*[_type == 'category'] | order(_random) [0...4]`);
@@ -28,12 +27,12 @@ export interface ICat {
   name: string,
   image: IImage
 }
-// export interface ICategory {
-//   _id: string,
-//   name: string,
-//   description: string,
-//   image: IImage
-// }
+export interface ICategory {
+  _id: string,
+  name: string,
+  description: string,
+  image: IImage
+}
 
 export interface IProduct {
   _id: string,
@@ -48,7 +47,6 @@ export interface IProduct {
 
 const getC = async (products: IProduct[]) => {
   const categoryRefs = products.map(product => product.category._ref);
-  console.log(categoryRefs)
   const data = await client.fetch(`*[ _type == 'category' && _id in $categoryRefs]`, {
     "categoryRefs": categoryRefs
   });
@@ -104,7 +102,7 @@ export default async function Home() {
           <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
             Best Selling
           </h3>
-          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-3 justify-between">
+          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-5 justify-between">
             {pro_data.map((item: any, index: number) => {
               const catItem = cat.find((catItem) => catItem._id === item.category._ref);
               const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name

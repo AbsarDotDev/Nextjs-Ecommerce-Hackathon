@@ -43,10 +43,10 @@ const Footer = async () => {
                           <Link href="../../shop" className="hover:underline hover:text-primary-pink">Shop</Link>
                       </li>
                       <li className="py-4">
-                          <Link href="https://tailwindcss.com/" className="hover:underline hover:text-primary-pink">About</Link>
+                          <Link href="#" className="hover:underline hover:text-primary-pink">About</Link>
                       </li>
                       <li>
-                          <Link href="https://tailwindcss.com/" className="hover:underline hover:text-primary-pink">Contact</Link>
+                          <Link href="#" className="hover:underline hover:text-primary-pink">Contact</Link>
                       </li>
                   </ul>
               </div>
@@ -54,7 +54,7 @@ const Footer = async () => {
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Categories</h2>
                   <ul className="text-gray-600 dark:text-gray-400 font-medium">
                       {data.map((item:categoryProps) => (
-       <Link href="@/app/category/{item.name}" key={item.name}><li className='py-2 hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
+       <Link href="@/app/category/{item.name}" key={item.name}><li className='py-2 hover:underline hover:text-primary-pink' key={item.name}>{item.name}</li></Link> 
       ))}
                   </ul>
               </div>
