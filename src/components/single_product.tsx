@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
-import Image  from 'next/image'
+import Image from 'next/image'
 import { IProduct } from '@/app/shop/[category]/page';
 import { urlForImage } from '@/lib/image';
 
 interface ProductCardsProps {
     product: IProduct;
-  }
- const ProductCard=({ product }: ProductCardsProps)=>{
+}
+const ProductCard = ({ product }: ProductCardsProps) => {
     return (
              <>
               <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
@@ -36,6 +36,7 @@ interface ProductCardsProps {
                     </div>
                 </div> 
                 </>   
+
     )
 }
 export default ProductCard

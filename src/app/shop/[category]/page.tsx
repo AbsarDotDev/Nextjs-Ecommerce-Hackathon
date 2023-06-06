@@ -5,7 +5,7 @@ import Link from "next/link";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
-export const getProductsByCategory = async (cat_name:string) => {
+ const getProductsByCategory = async (cat_name:string) => {
     const res = await client.fetch("*[_type == 'product' && category->name==$title]",{"title":cat_name});
     return res;
   } 
