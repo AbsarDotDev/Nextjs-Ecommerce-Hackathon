@@ -12,6 +12,8 @@ import Customer_Feedback from '@/components/feedback'
 
 import ProductCardHome from '@/components/single_product_home'
 
+
+
 export const getCat = async () => {
   const res = await client.fetch(`*[_type == 'category'] | order(_random) [0...4]`);
   return res;
@@ -66,9 +68,13 @@ export default async function Home() {
   // ];
 
   return (
-    <div>
+
+    < div >
       <Header />
       <HeroSection />
+
+
+
       {/* Category Section */}
 
 
@@ -99,6 +105,7 @@ export default async function Home() {
       {/* Best Selling Section */}
       <section className='px-20 best-selling mt-20 max-w-screen-6xl w-full'>
 
+
           <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
             Best Selling
           </h3>
@@ -128,6 +135,6 @@ export default async function Home() {
       {/*@ts-ignore */}
       <Footer />
 
-    </div>
+    </div >
   )
 }
