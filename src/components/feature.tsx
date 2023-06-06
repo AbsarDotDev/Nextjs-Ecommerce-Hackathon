@@ -42,7 +42,7 @@ const Features = () => {
   return (
     <div className="flex flex-col md:flex-row items-center my-20">
       {section.map((item) => (
-        <Data image={item.image} heading={item.heading} para={item.para} />
+        <Data key={item.para} image={item.image} heading={item.heading} para={item.para} />
       ))}
     </div>
   );
