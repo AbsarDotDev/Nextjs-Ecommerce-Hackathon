@@ -36,6 +36,7 @@ const ProductCard = ({ product, category }: ProductCardsProps) => {
                 </div>
             </div>
         </div> </>
+
     )
 }
 export default ProductCard
