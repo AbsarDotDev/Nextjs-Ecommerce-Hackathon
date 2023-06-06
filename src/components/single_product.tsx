@@ -9,7 +9,8 @@ interface ProductCardsProps {
   }
  const ProductCard=({ product }: ProductCardsProps)=>{
     return (
-             <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+             <>
+              <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
                     {/* Product Image */}
                     <Link href="#">
                         <Image className="p-8 rounded-t-lg transform transition-all duration-300 hover:scale-110" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
@@ -33,7 +34,8 @@ interface ProductCardsProps {
                             <Link href="#" className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
                         </div>
                     </div>
-                </div> </>   
+                </div> 
+                </>   
     )
 }
 export default ProductCard
