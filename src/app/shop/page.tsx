@@ -31,7 +31,7 @@ export default async function Shop() {
           royalty-free, stock assets
         </h5>
       </div>
-      <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] justify-between">
+      <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] mb-20 justify-between">
         {categories.map(
           (item: any) => { return (<div key={item._id} > <CategoryCards category={item} /></div>) }
         )}

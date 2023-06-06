@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
         <p className="text-white text-center text-[17px] my-4">Millions of designers and agencies around the world showcase their portfolio work <br /> on Dribble - the home to the world’s best design and creative professionals.</p>
         <div className='text-center'>
           <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink k py-3 px-8 text-white rounded-3xl'>
-            <Link href={'#'} className=''>
+            <Link href={'../shop'} className=''>
               Shop Now
             </Link>
           </button>

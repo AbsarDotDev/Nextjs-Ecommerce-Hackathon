@@ -11,7 +11,6 @@ import Customer_Feedback from '@/components/feedback'
 
 
 import ProductCardHome from '@/components/single_product_home'
-import { ICategory } from './shop/page'
 
 
 
@@ -30,12 +29,12 @@ export interface ICat {
   name: string,
   image: IImage
 }
-// export interface ICategory {
-//   _id: string,
-//   name: string,
-//   description: string,
-//   image: IImage
-// }
+export interface ICategory {
+  _id: string,
+  name: string,
+  description: string,
+  image: IImage
+}
 
 export interface IProduct {
   _id: string,
@@ -50,7 +49,6 @@ export interface IProduct {
 
 const getC = async (products: IProduct[]) => {
   const categoryRefs = products.map(product => product.category._ref);
-  console.log(categoryRefs)
   const data = await client.fetch(`*[ _type == 'category' && _id in $categoryRefs]`, {
     "categoryRefs": categoryRefs
   });
@@ -107,27 +105,28 @@ export default async function Home() {
       {/* Best Selling Section */}
       <section className='px-20 best-selling mt-20 max-w-screen-6xl w-full'>
 
-        <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
-          Best Selling
-        </h3>
-        <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-3 justify-between">
-          {pro_data.map((item: any, index: number) => {
-            const catItem = cat.find((catItem) => catItem._id === item.category._ref);
-            const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
 
-            return (
-              <div key={item._id}>
-                <ProductCardHome product={item} catname={catName} />
-              </div>
-            );
-          })}
+          <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
+            Best Selling
+          </h3>
+          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-5 justify-between">
+            {pro_data.map((item: any, index: number) => {
+              const catItem = cat.find((catItem) => catItem._id === item.category._ref);
+              const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
 
-        </div>
-        <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
-          <Link href={'#'} className=''>
-            View All
-          </Link>
-        </button>
+              return (
+                <div key={item._id}>
+                  <ProductCardHome product={item} catname={catName} />
+                </div>
+              );
+            })}
+
+          </div>
+          <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
+            <Link href={'#'} className=''>
+              View All
+            </Link>
+          </button>
       </section>
       <div className='px-20'>
         <Features />

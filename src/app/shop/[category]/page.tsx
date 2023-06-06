@@ -29,13 +29,14 @@ export default async function Prod({ params }: { params: { category: string } })
         <div className='px-20 pt-20 flex flex-col items-start'>
           <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
             {params.category}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-20 gap-8">
             {data.map(
-              (item: any) => {
-                return (<div key={item._id} > <ProductCard product={item} /></div>)
-              }
-            )}
+          (item: any) => {
+            return (<div key={item._id} > <ProductCard product={item} category={params.category}/></div>) }
+        )}
+
 
           </div>
         </div>
