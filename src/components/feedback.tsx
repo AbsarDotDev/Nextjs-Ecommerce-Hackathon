@@ -67,6 +67,7 @@ const Customer_Feedback = () => {
       <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] gap-x-2">
         {CustomerFeedback.map((item) => (
           <Data
+          key={item.name}
             image={item.image}
             name={item.name}
             para={item.para}

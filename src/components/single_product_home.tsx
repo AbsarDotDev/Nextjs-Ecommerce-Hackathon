@@ -3,23 +3,30 @@ import React from 'react'
 import Image from 'next/image'
 import { IProduct } from '@/app/shop/[category]/page';
 import { urlForImage } from '@/lib/image';
+import { category } from '../../sanity/category';
+import { client } from '@/lib/client';
+import { ICat } from '@/app/page';
 
 interface ProductCardsProps {
     product: IProduct;
-    category:string
+    catname: string;
 }
-const ProductCard = ({ product, category }: ProductCardsProps) => {
-    console.log(category)
+
+const ProductCardHome = ({ product, catname }: ProductCardsProps) => {
     return (
-        <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+        <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             {/* Product Image */}
-            <Link href={`./shop/${category}/${product.title}`}>
-                <Image className="p-8 rounded-t-lg transform transition-all duration-300 hover:scale-110 object-cover h-[320px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
+            <Link href={`/shop/${catname}/${product.title}`}>
+                <Image className="p-8 rounded-t-lg object-cover h-[350px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
             </Link>
             <div className="px-5 pb-5">
                 {/* Product Title */}
-                <Link href={`./shop/${category}/${product.title}`}>
+                <Link href={`/shop/${catname}/${product.title}`}>
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{product.title}</h5>
+                </Link>
+                {/* Product Category Title */}
+                <Link href={`/shop/${catname}`}>
+                    <h6 className="text-sm font-semibold tracking-tight text-primary-pink dark:text-white">{catname}</h6>
                 </Link>
                 {/* Rating */}
                 <div className="flex items-center mt-2.5 mb-5">
@@ -35,7 +42,7 @@ const ProductCard = ({ product, category }: ProductCardsProps) => {
                     <Link href="#" className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
                 </div>
             </div>
-        </div> </>
+        </div > </>
     )
 }
-export default ProductCard
+export default ProductCardHome

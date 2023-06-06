@@ -5,7 +5,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 
-export const getCategories = async () => {
+ const getCategories = async () => {
   const res = await client.fetch("*[_type == 'category']");
   return res;
 } 
@@ -30,7 +30,7 @@ export default async function Shop() {
             royalty-free, stock assets
         </h5>
       </div>
-      <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] justify-between">
+      <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] mb-20 justify-between">
         {categories.map(
           (item: any) => { return (<div key={item._id} > <CategoryCards category={item} /></div>) }
         )}
