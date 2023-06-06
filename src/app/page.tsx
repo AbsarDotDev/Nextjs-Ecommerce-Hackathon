@@ -1,15 +1,14 @@
-
 import Link from 'next/link'
 import CategoryCards from '../components/category_cards'
 import Footer from '../components/footer'
 import Header from '../components/header'
 import HeroSection from '../components/hero'
-import TwoColumnComponent from '../components/section'
 import { Image as IImage } from 'sanity'
-import SingleProduct from '@/components/single_product'
-import ProductCard from '@/components/single_product'
 import { client } from './lib/sanityClient'
 import CategoryCardsHome from '@/components/category_cards_home'
+import Features from '@/components/feature'
+import Customer_Feedback from '@/components/feedback'
+
 
 import ProductCardHome from '@/components/single_product_home'
 import { ICategory } from './shop/page'
@@ -125,10 +124,11 @@ export default async function Home() {
             </Link>
           </button>
         </div>
-
-
       </section>
-      <TwoColumnComponent />
+      <div className='px-20'>
+      <Features/>
+      <Customer_Feedback/>
+      </div>
       {/*@ts-ignore */}
       <Footer />
 

@@ -5,7 +5,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 
-export const getCategories = async () => {
+ const getCategories = async () => {
   const res = await client.fetch("*[_type == 'category']");
   return res;
 } 
