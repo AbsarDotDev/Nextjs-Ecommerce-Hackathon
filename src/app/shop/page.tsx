@@ -5,10 +5,10 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 
- const getCategories = async () => {
+const getCategories = async () => {
   const res = await client.fetch("*[_type == 'category']");
   return res;
-} 
+}
 export interface ICategory {
   _id: string,
   name: string,
@@ -18,16 +18,17 @@ export interface ICategory {
 
 export default async function Shop() {
   const categories: ICategory[] = await getCategories();
-  return (<> 
-     <Header/>  
+  return (<>
+    <Header />
+
     <section className="px-20 max-w-screen-6xl w-full">
       <div className='' >
         <h3 className="font-bold text-2xl text-gray-800 leading-5">
-        Categories
+          Categories
         </h3>
         <h5 className="text-gray-800 font-light text-lg pt-2 mb-5">
-            Explore diverse collections of our most incredible high-resolution,
-            royalty-free, stock assets
+          Explore diverse collections of our most incredible high-resolution,
+          royalty-free, stock assets
         </h5>
       </div>
       <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] justify-between">
@@ -38,10 +39,10 @@ export default async function Shop() {
 
       </div>
     </section>
- {/*@ts-ignore */}
+    {/*@ts-ignore */}
     <Footer />
-      </>
-  
+  </>
+
   );
 }
 

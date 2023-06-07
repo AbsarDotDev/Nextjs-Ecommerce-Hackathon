@@ -13,6 +13,8 @@ import Customer_Feedback from '@/components/feedback'
 import ProductCardHome from '@/components/single_product_home'
 import { ICategory } from './shop/page'
 
+
+
 export const getCat = async () => {
   const res = await client.fetch(`*[_type == 'category'] | order(_random) [0...4]`);
   return res;
@@ -68,9 +70,13 @@ export default async function Home() {
   // ];
 
   return (
-    <div>
+
+    < div >
       <Header />
       <HeroSection />
+
+
+
       {/* Category Section */}
 
 
@@ -101,27 +107,27 @@ export default async function Home() {
       {/* Best Selling Section */}
       <section className='px-20 best-selling mt-20 max-w-screen-6xl w-full'>
 
-          <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
-            Best Selling
-          </h3>
-          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-3 justify-between">
-            {pro_data.map((item: any, index: number) => {
-              const catItem = cat.find((catItem) => catItem._id === item.category._ref);
-              const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
+        <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
+          Best Selling
+        </h3>
+        <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-3 justify-between">
+          {pro_data.map((item: any, index: number) => {
+            const catItem = cat.find((catItem) => catItem._id === item.category._ref);
+            const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
 
-              return (
-                <div key={item._id}>
-                  <ProductCardHome product={item} catname={catName} />
-                </div>
-              );
-            })}
+            return (
+              <div key={item._id}>
+                <ProductCardHome product={item} catname={catName} />
+              </div>
+            );
+          })}
 
-          </div>
-          <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
-            <Link href={'#'} className=''>
-              View All
-            </Link>
-          </button>
+        </div>
+        <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
+          <Link href={'#'} className=''>
+            View All
+          </Link>
+        </button>
       </section>
       <div className='px-20'>
         <Features />
@@ -130,6 +136,6 @@ export default async function Home() {
       {/*@ts-ignore */}
       <Footer />
 
-    </div>
+    </div >
   )
 }
