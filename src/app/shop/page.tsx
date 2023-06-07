@@ -32,9 +32,9 @@ export default async function Shop() {
         </h5>
       </div>
       <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto] mb-20 justify-between">
-        {categories.map(
-          (item: any) => { return (<div key={item._id} > <CategoryCards category={item} /></div>) }
-        )}
+          {categories.map(
+            (item: any) => { return (<div key={item._id} > <CategoryCards category={item} /></div>) }
+          )}
 
 
       </div>

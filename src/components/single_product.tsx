@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
@@ -10,7 +11,8 @@ interface ProductCardsProps {
 }
 const ProductCard = ({ product, category }: ProductCardsProps) => {
     return (
-        <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+        <>
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             {/* Product Image */}
             <Link href={`./shop/${category}/${product.title}`}>
                 <Image className="p-8 rounded-t-lg transform transition-all duration-300 hover:scale-110 object-cover h-[320px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
@@ -31,7 +33,7 @@ const ProductCard = ({ product, category }: ProductCardsProps) => {
                     {/*@ts-ignore */}
                     <h6 className="text-xl font-semibold text-gray-900 dark:text-white">${product.price} </h6>
                     {/* Add to Cart Button */}
-                    <Link href="#" className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
+                    <Link href={`/shop/${category}/${product.title}`} className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Product</Link>
                 </div>
             </div>
         </div> </>
