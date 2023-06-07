@@ -19,7 +19,7 @@ export const getCat = async () => {
 }
 
 export const getPro = async () => {
-  const res = await client.fetch(`*[_type == 'product'] | order(_random) [0...4]`);
+  const res = await client.fetch(`*[_type == 'product'] | order(_random) [0...8]`);
   return res;
 }
 
@@ -86,7 +86,7 @@ export default async function Home() {
             royalty-free, stock assets
           </h5>
         </div>
-        <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] justify-between">
+        <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] gap-x-5">
           {data.map(
             (item: any) => { return (<div key={item._id} > <CategoryCardsHome category={item} /></div>) }
           )}
@@ -105,7 +105,7 @@ export default async function Home() {
           <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
             Best Selling
           </h3>
-          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] justify-between">
+          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto] gap-x-5 justify-between">
             {pro_data.map((item: any, index: number) => {
               const catItem = cat.find((catItem) => catItem._id === item.category._ref);
               const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
@@ -126,8 +126,8 @@ export default async function Home() {
         </div>
       </section>
       <div className='px-20'>
-      <Features/>
-      <Customer_Feedback/>
+        <Features />
+        <Customer_Feedback />
       </div>
       {/*@ts-ignore */}
       <Footer />
