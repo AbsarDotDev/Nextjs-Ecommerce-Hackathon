@@ -9,7 +9,6 @@ interface ProductCardsProps {
     category:string
 }
 const ProductCard = ({ product, category }: ProductCardsProps) => {
-    console.log(category)
     return (
         <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             {/* Product Image */}

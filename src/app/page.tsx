@@ -14,12 +14,12 @@ import ProductCardHome from '@/components/single_product_home'
 
 
 
-export const getCat = async () => {
+ const getCat = async () => {
   const res = await client.fetch(`*[_type == 'category'] | order(_random) [0...4]`);
   return res;
 }
 
-export const getPro = async () => {
+ const getPro = async () => {
   const res = await client.fetch(`*[_type == 'product'] | order(_random) [0...5]`);
   return res;
 }
