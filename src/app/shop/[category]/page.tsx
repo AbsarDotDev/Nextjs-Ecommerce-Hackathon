@@ -21,15 +21,17 @@ export interface IProduct {
   }
 }
 export default async function Prod({ params }: { params: { category: string } }) {
+  var Empty:string="";
   const data: IProduct[] = await getProductsByCategory(params.category)
+  {if (params.category=='Audio'|| params.category=='Video') {
+    Empty ="No Products Here Yet"
+  }}
   return (
     <>
       <Header /> <Breadcrumb />
       <section className='best-selling mt-20'>
         <div className='px-20 pt-20 flex flex-col items-start'>
-          <h3 className="font-bold text-2xl text-gray-800 leading-5  pb-5">
-            {params.category}
-
+          <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5"> {Empty}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-20 gap-8">
             {data.map(

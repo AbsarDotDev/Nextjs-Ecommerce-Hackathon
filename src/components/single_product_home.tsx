@@ -1,11 +1,9 @@
+
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
 import { IProduct } from '@/app/shop/[category]/page';
 import { urlForImage } from '@/lib/image';
-import { category } from '../../sanity/category';
-import { client } from '@/lib/client';
-import { ICat } from '@/app/page';
 
 interface ProductCardsProps {
     product: IProduct;
@@ -39,7 +37,8 @@ const ProductCardHome = ({ product, catname }: ProductCardsProps) => {
                     {/*@ts-ignore */}
                     <h6 className="text-xl font-semibold text-gray-900 dark:text-white">${product.price} </h6>
                     {/* Add to Cart Button */}
-                    <Link href="#" className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</Link>
+                    <Link href={`/shop/${catname}/${product.title}`} className="text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View Product</Link>
+
                 </div>
             </div>
         </div > </>
