@@ -7,7 +7,8 @@ interface ProductCardsProps {
   product: IProduct;
 }
 
-const AddToCartBtn = ({product}:ProductCardsProps) => {
+
+export const AddToCartBtn = ({product}:ProductCardsProps) => {
   const showToast=()=>{
     toast.success('Added To Cart Successfully!')
 }
@@ -21,7 +22,7 @@ const AddToCartBtn = ({product}:ProductCardsProps) => {
         quantity: counter
       })
     })
-    const result = await res.json()
+ const result = await res.json()
   }
   const price:number = Number(product.price);
 
@@ -96,5 +97,3 @@ const AddToCartBtn = ({product}:ProductCardsProps) => {
    
   );
 };
-
-export default AddToCartBtn;
