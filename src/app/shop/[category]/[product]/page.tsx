@@ -8,8 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlForImage } from "@/lib/image";
 import Footer from "@/components/footer";
-import AddToCartBtn from "@/components/addToCart_btn";
 import ProductCard from "@/components/single_product";
+import { category } from "../../../../../sanity/category";
+import { AddToCartBtn } from "@/components/addToCart_btn";
 
 const getProductData = async (prd_name: string) => {
   const res = await client.fetch("*[_type == 'product' && title==$title]", { "title": prd_name });

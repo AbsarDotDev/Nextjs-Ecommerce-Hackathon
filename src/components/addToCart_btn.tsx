@@ -1,16 +1,20 @@
 "use client";
 import { useState } from "react";
 import { IProduct } from "@/app/page";
+import toast, { Toaster } from "react-hot-toast";
 
-
-import React from "react";
 interface ProductCardsProps {
   product: IProduct;
 }
 
-const AddToCartBtn = ({product}:ProductCardsProps) => {
+
+export const AddToCartBtn = ({product}:ProductCardsProps) => {
+  const showToast=()=>{
+    toast.success('Added To Cart Successfully!')
+}
 
   const handleAddToCart = async()=>{
+    showToast()
     const res = await fetch("/api/cart",{
       method:"POST",
       body: JSON.stringify({
@@ -18,7 +22,7 @@ const AddToCartBtn = ({product}:ProductCardsProps) => {
         quantity: counter
       })
     })
-    const result = await res.json()
+ const result = await res.json()
   }
   const price:number = Number(product.price);
 
@@ -85,6 +89,7 @@ const AddToCartBtn = ({product}:ProductCardsProps) => {
       </div>
 
       {/* Add to Cart Button */}
+      <Toaster/>
       <button onClick={handleAddToCart} className="mt-10 text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Add to cart
       </button>
@@ -92,5 +97,3 @@ const AddToCartBtn = ({product}:ProductCardsProps) => {
    
   );
 };
-
-export default AddToCartBtn;

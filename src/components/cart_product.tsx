@@ -8,13 +8,13 @@ import { Cart } from "@/app/lib/drizzle";
 import { IProduct } from "@/app/shop/[category]/page";
 import { urlForImage } from "@/lib/image";
 
-
 interface ICart{
   cart:Cart,
   product:IProduct
 }
 
 const CartProductLayout = ({cart,product}:ICart) => {
+    console.log(product._id)
     const [counter, setCounter] = useState(cart.quantity);
     const price = 400;
 
@@ -39,8 +39,7 @@ const CartProductLayout = ({cart,product}:ICart) => {
 
     const getTotalPrice = () => {
         return price * counter;
-    };
-
+     };
     return (
 
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
