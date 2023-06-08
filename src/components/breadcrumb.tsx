@@ -5,6 +5,7 @@ import Link from 'next/link';
 const Breadcrumb = () => {
     const pathname = usePathname();
     const pathParts: string[] = pathname.split('/').filter(part => part !== '');
+
     return (
         <div className="bg-cover bg-[url('/painting2.jpg')] h-[40vh] flex items-center bg-center  py-8">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center">

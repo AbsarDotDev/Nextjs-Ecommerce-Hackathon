@@ -4,7 +4,7 @@ import { faFacebook , faTwitter , faInstagram,faPinterest, faDribbble} from '@fo
 import Link from 'next/link';
 import { client } from '@/app/lib/sanityClient';
 
-export const getCategoriesData = async () =>{ 
+ const getCategoriesData = async () =>{ 
   const res = await client.fetch(`*[_type=="category"]{name}`);
   return res
 }
