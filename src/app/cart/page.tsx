@@ -1,21 +1,28 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import CartProductLayout from "@/components/cart_product";
 import { Cart } from "../lib/drizzle";
 import { client } from "../lib/sanityClient";
 import { cookies } from "next/headers";
+import { constants } from "buffer";
 
 const getProductsById = async (data: Cart[]) => {
-const pro_id = data.map(item => item.product_id) 
-    const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", { "prd_id": pro_id });
-    return res;
+  if (!data) {
+    return []; // Return an empty array if data is undefined
   }
+
+  const pro_id = data.map(item => item.product_id);
+  const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", {
+    "prd_id": pro_id,
+  });
+  return res;
+};
+
 
 const getProductData = async () => {
     try {
         const user_id = cookies().get("user_id");
-        const res = await fetch(`http://localhost:3000/api/cart?user_id=${user_id?.value}`, {
+        const res = await fetch(`https://${process.env.VERCEL_URL}/api/cart?user_id=${user_id?.value}`, {
             method: "GET",
             cache: "no-store",
             headers: {
@@ -36,7 +43,8 @@ const getProductData = async () => {
 const Cart = async() => {
     const data = await getProductData();
     const result = await getProductsById(data)
-    console.log(result)
+console.log(result)
+    
     return (
         <div>
             <div className="container mx-auto mt-10">
@@ -44,7 +52,7 @@ const Cart = async() => {
                     <div className="w-full bg-white px-10 py-10">
                         <div className="flex justify-between border-b pb-8">
                             <h1 className="font-semibold text-2xl">Shopping Cart</h1>
-                            <h2 className="font-semibold text-2xl">3 Items</h2>
+                            <h2 className="font-semibold text-2xl"> Items</h2>
                         </div>
                         <div className="flex mt-10 mb-5">
                             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
@@ -52,7 +60,7 @@ const Cart = async() => {
                             <h3 className="font-semibolds text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
                             <h3 className="font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                         </div>
-                        {data.map(
+                        { !data?<div>No Items to show in cart</div>: data.map(
           (item: Cart,index:number) => { return (<div key={index}> <CartProductLayout cart={item} product={result[index]} /></div>) }
         )}
                         <div className="flex justify-between">
