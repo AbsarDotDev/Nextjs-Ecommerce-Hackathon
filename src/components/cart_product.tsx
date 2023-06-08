@@ -40,7 +40,7 @@ const CartProductLayout = ({cart,product}:ICart) => {
     const getTotalPrice = () => {
         return price * counter;
     };
-
+    const total= getTotalPrice()
     return (
 
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
