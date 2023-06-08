@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CartProductLayout from "@/components/cart_product";
-import { Cart } from "../lib/drizzle";
-import { client } from "../lib/sanityClient";
+import { Cart } from "../../lib/drizzle";
+import { client } from "../../lib/sanityClient";
 
 const getProductsById = async (data: Cart[]) => {
 const pro_id = data.map(item => item.product_id) 
@@ -15,7 +15,7 @@ const getProductData = async () => {
     try {
         const res = await fetch("http://localhost:3000/api/cart", {
             method: "GET",
-            cache: "no-store",
+            cache:"no-store",
             headers: {
                 "Content-Type": "application/json"
             }
@@ -35,7 +35,6 @@ const Cart = async() => {
 
     const data = await getProductData();
     const result = await getProductsById(data)
-    console.log(result)
     return (
         <div>
             <div className="container mx-auto mt-10">

@@ -1,4 +1,4 @@
-import { cartTable,db } from "@/app/lib/drizzle"
+import { cartTable,db } from "@/lib/drizzle"
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import{v4 as uuid} from 'uuid'
