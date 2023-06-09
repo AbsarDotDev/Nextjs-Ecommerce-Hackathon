@@ -39,13 +39,9 @@ const CartProductLayout = ({cart,product}:ICart) => {
 
     const getTotalPrice = () => {
         return price * counter;
-<<<<<<< HEAD
     };
         return (
-=======
-     };
-    return (
->>>>>>> 8d3c058cb85c0abbfb2374e17450b165ad50e5d6
+
 
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
             <div className="flex w-2/5">

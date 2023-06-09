@@ -38,7 +38,7 @@ const Header = () => {
       </div>
       <div className="flex items-center md:order-2 gap-x-5 items-start">
       <CartPopOver />
-          <button type="button" className="flex mr-3 text-sm  rounded-full md:mr-0 border-2 p-[7px] border-primary-lightpink focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          {/* <button type="button" className="flex mr-3 text-sm  rounded-full md:mr-0 border-2 p-[7px] border-primary-lightpink focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
             <FontAwesomeIcon icon={faUser} className='w-4' style={{"color": "#ee245f"}}/>
           </button>
@@ -63,7 +63,7 @@ const Header = () => {
               </li>
             </ul>
 
-          </div>
+          </div> */}
 
           <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-0 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
