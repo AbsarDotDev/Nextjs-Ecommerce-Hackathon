@@ -14,7 +14,6 @@ interface ICart{
 }
 
 const CartProductLayout = ({cart,product}:ICart) => {
-    console.log(product._id)
     const [counter, setCounter] = useState(cart.quantity);
     const price = 400;
 
@@ -40,17 +39,42 @@ const CartProductLayout = ({cart,product}:ICart) => {
     const getTotalPrice = () => {
         return price * counter;
     };
+
+    const handleDelete =async (item_id:number) => {
+        try {
+           
+  
+            const res = await fetch(`http://127.0.0.1:3000/api/cart`, {
+                method: "DELETE",
+                mode:'no-cors',
+                cache:"no-store",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify({"id":item_id})
+            });
+            if (!res.ok) {
+                throw new Error("Failed to fetch the data")
+            };
+            const result = await res.json();
+  
+            return result
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
         return (
 
 
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
             <div className="flex w-2/5">
                 <div className="w-20">
-                    {/* <Image src={urlForImage(product.image).url()} width={70} height={60} alt="asdjn" /> */}
+                    <Image src={urlForImage(product.image).url()} width={70} height={60} alt="asdjn" />
                 </div>
                 <div className="flex flex-col items-start justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{product.title}</span>
-                    <button className="font-semibold text-red-600 hover:text-red-500 text-xs">Remove</button>
+                    <button onClick={()=>handleDelete(cart.id)} className="font-semibold text-red-600 hover:text-red-500 text-xs">Remove</button>
                 </div>
             </div>
             <div className="flex justify-center w-1/5">

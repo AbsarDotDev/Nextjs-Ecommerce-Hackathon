@@ -42,7 +42,7 @@ export const POST = async (request:Request) =>{
 }
 export const DELETE = async (request:Request) =>{
     const req = await request.json();
-    const user_id = cookies().get("user_id");
+    console.log(req.id)
     try {
         const res = await db.delete(cartTable).where(eq(cartTable.id,req.id)).returning();
         return NextResponse.json({res})

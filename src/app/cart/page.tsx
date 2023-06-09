@@ -1,59 +1,52 @@
+
 import React from "react";
 import Link from "next/link";
 import CartProductLayout from "@/components/cart_product";
-
 import { Cart } from "../../lib/drizzle";
 import { client } from "../../lib/sanityClient";
 import { cookies } from "next/headers";
-import { constants } from "buffer";
 
 const getProductsById = async (data: Cart[]) => {
-  if (!data) {
-    return []; // Return an empty array if data is undefined
-  }
-
-  const pro_id = data.map(item => item.product_id);
-  const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", {
-    "prd_id": pro_id,
-  });
-  return res;
-};
-
-
-const getProductData = async () => {
-    try {
-        const user_id = cookies().get("user_id");
-        const res = await fetch(`http://127.0.0.1:3000/api/cart?user_id=${user_id?.value}`, {
-            method: "GET",
-            cache:"no-store",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        });
-        if (!res.ok) {
-            throw new Error("Failed to fetch the data")
-        };
-        const result = await res.json()
-        return result
-    } catch (err) {
-        console.log(err)
+    if (!data) {
+      return []; // Return an empty array if data is undefined
     }
-}
+  
+    const pro_id = data.map(item => item.product_id);
+    const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", {
+      "prd_id": pro_id,
+    });
+    return res;
+  };
+  
+  
+  const getProductData = async () => {
+      try {
+          const user_id = cookies().get("user_id");
 
+          const res = await fetch(`http://127.0.0.1:3000/api/cart?user_id=${user_id?.value}`, {
+              method: "GET",
+              mode:'no-cors',
+              cache:"no-store",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+          });
+          if (!res.ok) {
+              throw new Error("Failed to fetch the data")
+          };
+          const result = await res.json();
 
+          return result
+      } catch (err) {
+          console.log(err)
+      }
+  }
 const Cart = async() => {
+
+      
     const data = await getProductData();
     const result = await getProductsById(data)
-console.log(result)
-const getGrandTotal = () => {
-    let grandTotal = 0;
-    data.map((item:Cart, index:number) => {
-      const product = result[index];
-      const totalPrice = product.price * item.quantity;
-      grandTotal += totalPrice;
-    });
-    return grandTotal;
-  };
+
 
     return (
         <div>
@@ -91,7 +84,7 @@ const getGrandTotal = () => {
                         <div className="flex justify-center" >
                         <button className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10">Proceed To Checkout</button>
                     </div>
-                    <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2>
+                    {/* <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2> */}
                     </div>
                 </div>
             </div>
