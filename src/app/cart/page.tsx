@@ -31,11 +31,12 @@ const getProductsById = async (data: Cart[]) => {
                   "Content-Type": "application/json"
               },
           });
+
           if (!res.ok) {
               throw new Error("Failed to fetch the data")
           };
           const result = await res.json();
-
+console.log(result)
           return result
       } catch (err) {
           console.log(err)

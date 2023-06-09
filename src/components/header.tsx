@@ -37,6 +37,7 @@ const Header = () => {
       </div>
       </div>
       <div className="lg:items-center flex md:order-2 gap-x-5 items-start">
+      {/* @ts-ignore */}
       <CartPopOver />
           {/* <button type="button" className="flex mr-3 text-sm  rounded-full md:mr-0 border-2 p-[7px] border-primary-lightpink focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
