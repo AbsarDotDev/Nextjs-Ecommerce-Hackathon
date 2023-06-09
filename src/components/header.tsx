@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import CartPopOver from './cart_icon';
 
 const Header = () => {
@@ -37,10 +37,7 @@ const Header = () => {
       </div>
       </div>
       <div className="flex items-center md:order-2 gap-x-5 items-start">
-
-
-      <CartPopOver/>
-
+      <CartPopOver />
           <button type="button" className="flex mr-3 text-sm  rounded-full md:mr-0 border-2 p-[7px] border-primary-lightpink focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only">Open user menu</span>
             <FontAwesomeIcon icon={faUser} className='w-4' style={{"color": "#ee245f"}}/>

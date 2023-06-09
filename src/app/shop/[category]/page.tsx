@@ -11,6 +11,7 @@ const getProductsByCategory = async (cat_name: string) => {
   return res;
 }
 export interface IProduct {
+  forEach(arg0: (product: any) => void): unknown;
   _id: string,
   title: string,
   description: string,
