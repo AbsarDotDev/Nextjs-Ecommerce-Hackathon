@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook , faTwitter , faInstagram,faPinterest, faDribbble} from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
-import { client } from '@/app/lib/sanityClient';
+import { client } from '@/lib/sanityClient';
 
  const getCategoriesData = async () =>{ 
   const res = await client.fetch(`*[_type=="category"]{name}`);

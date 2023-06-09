@@ -4,7 +4,7 @@ import { useState } from "react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Cart } from "@/app/lib/drizzle";
+import { Cart } from "@/lib/drizzle";
 import { IProduct } from "@/app/shop/[category]/page";
 import { urlForImage } from "@/lib/image";
 
@@ -39,13 +39,18 @@ const CartProductLayout = ({cart,product}:ICart) => {
 
     const getTotalPrice = () => {
         return price * counter;
+<<<<<<< HEAD
+    };
+        return (
+=======
      };
     return (
+>>>>>>> 8d3c058cb85c0abbfb2374e17450b165ad50e5d6
 
         <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
             <div className="flex w-2/5">
                 <div className="w-20">
-                    <Image src={urlForImage(product.image).url()} width={70} height={60} alt="asdjn" />
+                    {/* <Image src={urlForImage(product.image).url()} width={70} height={60} alt="asdjn" /> */}
                 </div>
                 <div className="flex flex-col items-start justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{product.title}</span>
