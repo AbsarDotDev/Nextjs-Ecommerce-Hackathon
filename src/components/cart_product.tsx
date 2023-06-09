@@ -76,7 +76,7 @@ const CartProductLayout = ({cart,product}:ICart) => {
                     </svg>
                 </button>
             </div>
-            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice().toFixed(2)}</span>
+            <span className="text-center w-1/5 font-semibold text-sm">${price}</span>
             <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice().toFixed(2)}</span>
         </div>
 

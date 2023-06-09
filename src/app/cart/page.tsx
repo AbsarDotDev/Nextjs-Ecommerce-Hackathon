@@ -22,7 +22,7 @@ const getProductsById = async (data: Cart[]) => {
 const getProductData = async () => {
     try {
         const user_id = cookies().get("user_id");
-        const res = await fetch(`https://${process.env.VERCEL_URL}/api/cart?user_id=${user_id?.value}`, {
+        const res = await fetch(`http://127.0.0.1:3000/api/cart?user_id=${user_id?.value}`, {
             method: "GET",
             cache: "no-store",
             headers: {
@@ -44,7 +44,15 @@ const Cart = async() => {
     const data = await getProductData();
     const result = await getProductsById(data)
 console.log(result)
-    
+const getGrandTotal = () => {
+    let grandTotal = 0;
+    data.map((item:Cart, index:number) => {
+      const product = result[index];
+      const totalPrice = product.price * item.quantity;
+      grandTotal += totalPrice;
+    });
+    return grandTotal;
+  };
     return (
         <div>
             <div className="container mx-auto mt-10">
@@ -52,7 +60,7 @@ console.log(result)
                     <div className="w-full bg-white px-10 py-10">
                         <div className="flex justify-between border-b pb-8">
                             <h1 className="font-semibold text-2xl">Shopping Cart</h1>
-                            <h2 className="font-semibold text-2xl"> Items</h2>
+                            <h2 className="font-semibold text-2xl">{!data?"0":data.length} Items</h2>
                         </div>
                         <div className="flex mt-10 mb-5">
                             <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
@@ -63,6 +71,7 @@ console.log(result)
                         { !data?<div>No Items to show in cart</div>: data.map(
           (item: Cart,index:number) => { return (<div key={index}> <CartProductLayout cart={item} product={result[index]} /></div>) }
         )}
+        <h2 className="font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center" >Total</h2>
                         <div className="flex justify-between">
 
                             <Link href="/shop" className="flex font-semibold text-indigo-600 text-sm mt-10">
@@ -80,6 +89,7 @@ console.log(result)
                         <div className="flex justify-center" >
                         <button className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10">Proceed To Checkout</button>
                     </div>
+                    <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2>
                     </div>
                 </div>
             </div>
