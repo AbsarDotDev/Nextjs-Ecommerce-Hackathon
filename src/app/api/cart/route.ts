@@ -1,4 +1,5 @@
-import { cartTable,db } from "@/app/lib/drizzle"
+import { cartTable,db } from "@/lib/drizzle"
+
 import { eq } from "drizzle-orm";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -33,6 +34,17 @@ export const POST = async (request:Request) =>{
            quantity: req.quantity,
            user_id: cookies().get("user_id")?.value as string
         }).returning();
+        return NextResponse.json({res})
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+export const DELETE = async (request:Request) =>{
+    const req = await request.json();
+    const user_id = cookies().get("user_id");
+    try {
+        const res = await db.delete(cartTable).where(eq(cartTable.id,req.id)).returning();
         return NextResponse.json({res})
     } catch (error) {
         console.log(error)

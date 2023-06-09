@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import CartProductLayout from "@/components/cart_product";
-import { Cart } from "../lib/drizzle";
-import { client } from "../lib/sanityClient";
+
+import { Cart } from "../../lib/drizzle";
+import { client } from "../../lib/sanityClient";
 import { cookies } from "next/headers";
 import { constants } from "buffer";
 
@@ -24,7 +25,7 @@ const getProductData = async () => {
         const user_id = cookies().get("user_id");
         const res = await fetch(`http://127.0.0.1:3000/api/cart?user_id=${user_id?.value}`, {
             method: "GET",
-            cache: "no-store",
+            cache:"no-store",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -53,6 +54,7 @@ const getGrandTotal = () => {
     });
     return grandTotal;
   };
+
     return (
         <div>
             <div className="container mx-auto mt-10">
