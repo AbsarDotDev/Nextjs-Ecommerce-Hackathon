@@ -11,8 +11,6 @@ export const GET = async (request:Request) =>{
     const { searchParams } = new URL(request.url);
     const user_id = searchParams.get('user_id');
     try {
-       
-
         const res = await db.select().from(cartTable).where(eq(cartTable.user_id,user_id as string));
         return NextResponse.json(res)
     } catch (error) {
