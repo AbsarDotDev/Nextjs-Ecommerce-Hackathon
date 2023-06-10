@@ -36,6 +36,7 @@ export const POST = async (request: NextRequest) => {
       });
     } else {
       throw new Error('Client secret is null');
+
     }
   } catch (error) {
     console.error('Error creating payment intent:', error);

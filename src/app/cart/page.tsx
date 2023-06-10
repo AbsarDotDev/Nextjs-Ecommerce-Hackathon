@@ -7,8 +7,36 @@ import { client } from "../../lib/sanityClient";
 import { cookies } from "next/headers";
 
 const getProductsById = async (data: Cart[]) => {
-    if (!data) {
-      return []; // Return an empty array if data is undefined
+
+  if (!data) {
+    return []; // Return an empty array if data is undefined
+  }
+
+  const pro_id = data.map(item => item.product_id);
+  const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", {
+    "prd_id": pro_id,
+  });
+  return res;
+};
+
+
+const getProductData = async () => {
+    try {
+        const user_id = cookies().get("user_id");
+        const res = await fetch(`http://localhost:3000/api/cart?user_id=${user_id?.value}`, {
+            method: "GET",
+            cache:"no-store",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        });
+        if (!res.ok) {
+            throw new Error("Failed to fetch the data")
+        };
+        const result = await res.json()
+        return result
+    } catch (err) {
+        console.log(err)
     }
   
     const pro_id = data.map(item => item.product_id);

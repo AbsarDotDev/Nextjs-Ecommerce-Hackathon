@@ -17,7 +17,7 @@ interface ICart{
 
 const CartProductLayout = ({cart,product}:ICart) => {
     const [counter, setCounter] = useState(cart.quantity);
-    const price = 400;
+    const price = product.price;
 
 
     const handleIncrement = () => {
@@ -38,8 +38,9 @@ const CartProductLayout = ({cart,product}:ICart) => {
         }
     };
 
-    const getTotalPrice = () => {
+    const getTotalPrice = (price:number) => {
         return price * counter;
+
     };
     const handleDelete =async () => {
         try {
@@ -61,6 +62,7 @@ const CartProductLayout = ({cart,product}:ICart) => {
         } catch (err) {
             console.log(err)
         }
+
 
     }
         return (
@@ -98,8 +100,9 @@ const CartProductLayout = ({cart,product}:ICart) => {
                     </svg>
                 </button>
             </div>
-            <span className="text-center w-1/5 font-semibold text-sm">${price}</span>
-            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice().toFixed(2)}</span>
+
+            <span className="text-center w-1/5 font-semibold text-sm">${`${product.price}`}</span>
+            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice(Number(product.price)).toFixed(2)}</span>
         </div>
 
     );
