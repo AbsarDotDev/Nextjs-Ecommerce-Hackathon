@@ -15,7 +15,7 @@ const createPaymentIntent = async (amount: number) => {
 };
 export const POST = async (request: NextRequest) =>{
   const req = await request.json();
-
+console.log(req)
     try {
       const { amount } = req;
 

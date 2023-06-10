@@ -37,9 +37,17 @@ const CartProductLayout = ({cart,product}:ICart) => {
         }
     };
 
-    const getTotalPrice = () => {
+    const getTotalPrice = (price:number) => {
         return price * counter;
-    };
+      };
+    //   const calculateTotalPrice = (data) => {
+    //     let total = 0;
+    //     data.forEach((item) => {
+    //       total += item.product.price * item.quantity;
+    //     });
+    //     return total;
+    //   };
+      
         return (
 
 
@@ -77,8 +85,8 @@ const CartProductLayout = ({cart,product}:ICart) => {
                     </svg>
                 </button>
             </div>
-            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice().toFixed(2)}</span>
-            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice().toFixed(2)}</span>
+            <span className="text-center w-1/5 font-semibold text-sm">${`${product.price}`}</span>
+            <span className="text-center w-1/5 font-semibold text-sm">${getTotalPrice(Number(product.price)).toFixed(2)}</span>
         </div>
 
     );

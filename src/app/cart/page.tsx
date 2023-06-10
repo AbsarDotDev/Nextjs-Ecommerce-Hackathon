@@ -23,7 +23,7 @@ const getProductsById = async (data: Cart[]) => {
 const getProductData = async () => {
     try {
         const user_id = cookies().get("user_id");
-        const res = await fetch(`https://${process.env.VERCEL_URL}/api/cart?user_id=${user_id?.value}`, {
+        const res = await fetch(`http://localhost:3000/api/cart?user_id=${user_id?.value}`, {
             method: "GET",
             cache:"no-store",
             headers: {
