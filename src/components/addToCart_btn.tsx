@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { IProduct } from "@/app/page";
 import toast, { Toaster } from "react-hot-toast";
-
+import { useRouter } from "next/navigation";
 interface ProductCardsProps {
   product: IProduct;
 }
 
 
 export const AddToCartBtn = ({product}:ProductCardsProps) => {
+  const router=useRouter();
   const showToast=()=>{
     toast.success('Added To Cart Successfully!')
 }
@@ -23,6 +24,7 @@ export const AddToCartBtn = ({product}:ProductCardsProps) => {
       })
     })
  const result = await res.json()
+ router.refresh()
   }
   const price:number = Number(product.price);
 
