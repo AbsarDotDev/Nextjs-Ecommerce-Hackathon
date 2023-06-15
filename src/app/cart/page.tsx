@@ -19,33 +19,8 @@ const getProductsById = async (data: Cart[]) => {
   return res;
 };
 
+const uuuid = cookies().get("user_id");
 
-const getProductData = async () => {
-    try {
-        const user_id = cookies().get("user_id");
-        const res = await fetch(`http://localhost:3000/api/cart?user_id=${user_id?.value}`, {
-            method: "GET",
-            cache:"no-store",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        });
-        if (!res.ok) {
-            throw new Error("Failed to fetch the data")
-        };
-        const result = await res.json()
-        return result
-    } catch (err) {
-        console.log(err)
-    }
-  
-    const pro_id = data.map(item => item.product_id);
-    const res = await client.fetch("*[_type == 'product' && _id in $prd_id]", {
-      "prd_id": pro_id,
-    });
-    return res;
-  };
-  
   
   const getProductData = async () => {
       try {
@@ -64,7 +39,6 @@ const getProductData = async () => {
               throw new Error("Failed to fetch the data")
           };
           const result = await res.json();
-console.log(result)
           return result
       } catch (err) {
           console.log(err)
@@ -111,7 +85,7 @@ const Cart = async() => {
                             </button>
                         </div>
                         <div className="flex justify-center" >
-                        <button className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10">Proceed To Checkout</button>
+                        <Link className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10" href={`./checkout?user_id${uuuid?.value as string}`}>Proceed To Checkout</Link>
                     </div>
                     {/* <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2> */}
                     </div>
