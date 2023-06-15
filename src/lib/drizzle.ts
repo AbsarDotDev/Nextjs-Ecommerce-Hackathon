@@ -9,7 +9,7 @@ export const cartTable = pgTable("cart",{
     product_id: varchar("product_id",{length:255}).notNull(),
     quantity: integer("quantity").notNull(),
 })
-export const OrderTable = pgTable("cart",{
+export const OrderTable = pgTable("orders",{
     id: serial("id").primaryKey(),
     user_id: varchar("user_id",{length:255}).notNull(),
     order_date: date("user_id").notNull(),
@@ -19,7 +19,12 @@ export const OrderTable = pgTable("cart",{
     email: varchar("email",{length:255}).notNull(),
     phone_number: varchar("number",{length:20}).notNull(),
 })
-
+export const OrderItemsTable = pgTable("order_items",{
+    id: serial("id").primaryKey(),
+    order_id: integer("order_id").references(() => OrderTable.id),
+    product_id: varchar("product_id",{length:255}).notNull(),
+    quantity: integer("quantity").notNull(),
+})
 
 export type Cart=InferModel<typeof cartTable>
 export const db = drizzle(sql); 

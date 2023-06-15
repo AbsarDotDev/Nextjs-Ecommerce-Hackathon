@@ -25,7 +25,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({amount  }) => {
   const [error, setError] = useState<string | null>();
 
   const onSubmit = async (data: CheckoutFormData) => {
-  console.log(stripe)
     if (!stripe || !elements) {
       return;
     }
@@ -33,7 +32,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({amount  }) => {
     const cardElement = elements.getElement(CardElement);
     const formData = {
       ...data,
-      amount:amount,
+      amount:800,
       card: cardElement,
     };
     if (!cardElement) {
@@ -48,10 +47,10 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({amount  }) => {
     if (error) {
       setError(error.message);
       return;
-    }
+    }   
   
     try {
-      const response = await fetch('/api/checkout_sessions', {
+      const response = await fetch('http://127.0.0.1:3000/api/checkout_sessions', {
         method: 'POST',
         cache:'no-store',
         headers: {
@@ -59,7 +58,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({amount  }) => {
         },
         body: JSON.stringify(formData),
       });
-  
       if (!response.ok) {
         throw new Error('Failed to create payment intent');
       }
