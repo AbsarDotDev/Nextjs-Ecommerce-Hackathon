@@ -68,7 +68,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart,userId }) => {
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify({ alldata: formData, cartItems: cart }),
       });
       if (!response.ok) {
