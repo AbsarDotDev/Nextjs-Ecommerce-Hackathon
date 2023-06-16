@@ -34,7 +34,9 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
       return;
     }
 
-    const cartItems = cart.map((item) => {  return(item.product_id)    });
+    // const cartItems = cart.map((item) => {
+    //   return item.product_id;
+    // });
     const cardElement = elements.getElement(CardElement);
     const formData = {
       ...data,
@@ -61,7 +63,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 'alldata':formData, cartItems }),
+        body: JSON.stringify({ alldata: formData, cartItems: cart }),
       });
       if (!response.ok) {
         throw new Error("Failed to create payment intent");

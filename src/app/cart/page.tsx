@@ -5,6 +5,7 @@ import CartProductLayout from "@/components/cart_product";
 import { Cart } from "../../lib/drizzle";
 import { client } from "../../lib/sanityClient";
 import { cookies } from "next/headers";
+import { IProduct } from "../page";
 
 const getProductsById = async (data: Cart[]) => {
 
@@ -44,10 +45,20 @@ const getProductsById = async (data: Cart[]) => {
           console.log(err)
       }
   }
+  const getCartTotal = (cart:Cart[],products:IProduct[]) => {
+    let total = 0;
+  
+    for (const [index, item] of cart.entries()) {
+        total += Number(products[index].price) * item.quantity;
+      }
+      localStorage.setItem('totalPrice', total.toFixed(2));
+
+    return total.toFixed(2);
+  };
 const Cart = async() => {
 
       
-    const data = await getProductData();
+    const data:Cart[] = await getProductData();
     const result = await getProductsById(data)
 
 
@@ -69,7 +80,7 @@ const Cart = async() => {
                         { !data?<div>No Items to show in cart</div>: data.map(
           (item: Cart,index:number) => { return (<div key={index}> <CartProductLayout cart={item} product={result[index]} /></div>) }
         )}
-        <h2 className="font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center" >Total</h2>
+        <h2 className="font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center" >Total Price: ${getCartTotal(data,result)}</h2>
                         <div className="flex justify-between">
 
                             <Link href="/shop" className="flex font-semibold text-indigo-600 text-sm mt-10">
@@ -77,15 +88,15 @@ const Cart = async() => {
                                 <svg className="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
                                 Continue Shopping
                             </Link>
-                            <button>
+                            {/* <button>
                                 <Link href="#" className="flex font-semibold text-indigo-600 text-sm mt-10 ">
                                     Update Cart
                                     <svg className="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
                                 </Link>
-                            </button>
+                            </button> */}
                         </div>
                         <div className="flex justify-center" >
-                        <Link className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10" href={`./checkout?user_id=${cookies().get("user_id")?.value as string}`}>Proceed To Checkout</Link>
+                        <Link className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-center text-white uppercase w-[75%] mt-10" href={`./checkout?user_id=${cookies().get("user_id")?.value as string}`}>Proceed To Checkout</Link>
                     </div>
                     {/* <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2> */}
                     </div>

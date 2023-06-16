@@ -1,4 +1,4 @@
-import { OrderTable,db } from "@/lib/drizzle"
+import { Cart, OrderItemsTable, OrderTable,db } from "@/lib/drizzle"
 import { cookies } from "next/headers";
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -21,10 +21,10 @@ export const POST = async (request: NextRequest) => {
   const req = await request.json();
 
   try {
-    const { alldata, products } = req;
+    const { alldata, cartItems } = req;
 
     // Save order details in the database
-    const orderId = await saveOrderDetails(alldata, products);
+    const orderId = await saveOrderDetails(alldata, cartItems);
 
     const paymentIntent = await createPaymentIntent(alldata.amount);
 
@@ -45,13 +45,13 @@ export const POST = async (request: NextRequest) => {
 };
 
 // Function to save order details in the database
-const saveOrderDetails = async (alldata: any, products: any[]) => {
+const saveOrderDetails = async (alldata: any, cartItems: any[]) => {
   // Save the formData in the Orders table and retrieve the orderId
   const orderId:any = await saveOrder(alldata);
   console.log(orderId)
 
   // Save the product details in the Order_Items table
-  await saveOrderItems(orderId, products);
+  await saveOrderItems(orderId, cartItems);
 
   return orderId;
 };
@@ -74,12 +74,17 @@ const formattedDate = `${year}-${month}-${day}`;
     user_id: cookies().get("user_id")?.value as string,
     order_date:formattedDate,
  }).returning();
- console.log(res)
-
+return res[0].id
 };
 
 // Function to save the product details in the Order_Items table
-const saveOrderItems = async (orderId: number, products: any[]) => {
-  // Implement your database logic to save the product details in the
-  // Order_Items table using the orderId
+const saveOrderItems = async (orderId: number, cartItems: any[]) => {
+  cartItems.map( async (item:Cart) =>{
+ await db.insert(OrderItemsTable).values({
+      order_id:orderId,
+      product_id:item.product_id,
+      quantity:item.quantity
+        })
+  })
+
 };
