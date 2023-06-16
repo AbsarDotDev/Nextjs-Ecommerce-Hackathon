@@ -5,6 +5,9 @@ import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Cart } from "@/lib/drizzle";
+
+
+
 interface CheckoutFormData {
   firstName: string;
   lastName: string;
@@ -16,8 +19,9 @@ interface CheckoutFormData {
 interface CheckoutFormProps {
   amount: number;
   cart: Cart[];
+  userId:string
 }
-const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart,userId }) => {
   const stripe = useStripe();
   const elements = useElements();
   const {
@@ -34,11 +38,14 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
       return;
     }
 
-    const cartItems = cart.map((item) => {  return(item.product_id)    });
+    // const cartItems = cart.map((item) => {
+    //   return item.product_id;
+    // });
     const cardElement = elements.getElement(CardElement);
     const formData = {
       ...data,
-      amount: 800,
+      amount: amount,
+      user_id:userId
     };
     if (!cardElement) {
       return;
@@ -61,7 +68,8 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 'alldata':formData, "cartItems":cartItems }),
+
+        body: JSON.stringify({ alldata: formData, cartItems: cart }),
       });
       if (!response.ok) {
         throw new Error("Failed to create payment intent");
