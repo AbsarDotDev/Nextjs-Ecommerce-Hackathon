@@ -14,12 +14,12 @@ const ProductCard = ({ product, category }: ProductCardsProps) => {
         <>
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             {/* Product Image */}
-            <Link href={`./shop/${category}/${product.title}`}>
+            <Link href={`/shop/${category}/${product.title}`}>
                 <Image className="p-8 rounded-t-lg transform transition-all duration-300 hover:scale-110 object-cover h-[320px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
             </Link>
             <div className="px-5 pb-5">
                 {/* Product Title */}
-                <Link href={`./shop/${category}/${product.title}`}>
+                <Link href={`/shop/${category}/${product.title}`}>
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{product.title}</h5>
                 </Link>
                 {/* Rating */}
