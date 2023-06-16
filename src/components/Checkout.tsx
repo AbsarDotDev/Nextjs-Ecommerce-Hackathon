@@ -5,6 +5,9 @@ import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Cart } from "@/lib/drizzle";
+
+
+
 interface CheckoutFormData {
   firstName: string;
   lastName: string;
@@ -40,7 +43,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
     const cardElement = elements.getElement(CardElement);
     const formData = {
       ...data,
-      amount: 800,
+      amount: amount,
     };
     if (!cardElement) {
       return;
