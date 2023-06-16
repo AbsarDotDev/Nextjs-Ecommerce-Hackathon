@@ -19,8 +19,9 @@ interface CheckoutFormData {
 interface CheckoutFormProps {
   amount: number;
   cart: Cart[];
+  userId:string
 }
-const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart,userId }) => {
   const stripe = useStripe();
   const elements = useElements();
   const {
@@ -44,6 +45,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
     const formData = {
       ...data,
       amount: amount,
+      user_id:userId
     };
     if (!cardElement) {
       return;
