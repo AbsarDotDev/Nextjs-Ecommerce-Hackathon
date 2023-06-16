@@ -19,6 +19,7 @@ const getProductData = async (user_id:string) => {
           throw new Error("Failed to fetch the data")
       };
       const result = await res.json();
+
       return result
   } catch (err) {
       console.log(err)
@@ -26,13 +27,12 @@ const getProductData = async (user_id:string) => {
 }
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!) as Promise<Stripe | null>;
-const Checkout =async () => {
+const Checkout = async () => {
   const searchParams= useSearchParams()
 const user_id= searchParams.get('user_id');
-const data=await getProductData(user_id!);
+const data= await getProductData(user_id!);
   return (
     <div>
-      {/* ... */}
       <div className="flex justify-center">
         <Elements stripe={stripePromise}>
           <CheckoutForm amount={1000} cart={data}/>

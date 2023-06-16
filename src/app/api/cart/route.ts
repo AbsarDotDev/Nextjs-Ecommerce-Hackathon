@@ -40,6 +40,7 @@ export const POST = async (request:Request) =>{
         
     }
 }
+
 export const DELETE = async (request:Request) =>{
     const req = await request.json();
     try {

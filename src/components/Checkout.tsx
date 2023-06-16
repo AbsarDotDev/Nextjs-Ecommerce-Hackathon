@@ -61,7 +61,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, cart }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 'alldata':formData, cartItems }),
+        body: JSON.stringify({ 'alldata':formData, "cartItems":cartItems }),
       });
       if (!response.ok) {
         throw new Error("Failed to create payment intent");
