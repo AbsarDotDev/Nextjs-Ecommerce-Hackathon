@@ -19,7 +19,7 @@ const getProductsById = async (data: Cart[]) => {
   return res;
 };
 
-const uuuid = cookies().get("user_id");
+
 
   
   const getProductData = async () => {
@@ -85,7 +85,7 @@ const Cart = async() => {
                             </button>
                         </div>
                         <div className="flex justify-center" >
-                        <Link className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10" href={`./checkout?user_id${uuuid?.value as string}`}>Proceed To Checkout</Link>
+                        <Link className="bg-primary-pink font-semibold hover:bg-primary-lightpink py-3 text-sm text-white uppercase w-[75%] mt-10" href={`./checkout?user_id=${cookies().get("user_id")?.value as string}`}>Proceed To Checkout</Link>
                     </div>
                     {/* <h2 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Grand Total: ${getGrandTotal().toFixed(2)}</h2> */}
                     </div>

@@ -21,12 +21,12 @@ export const POST = async (request: NextRequest) => {
   const req = await request.json();
 
   try {
-    const { formData, products } = req;
+    const { alldata, products } = req;
 
     // Save order details in the database
-    const orderId = await saveOrderDetails(formData, products);
+    const orderId = await saveOrderDetails(alldata, products);
 
-    const paymentIntent = await createPaymentIntent(formData.amount);
+    const paymentIntent = await createPaymentIntent(alldata.amount);
 
     if (paymentIntent.client_secret) {
       return NextResponse.json({
@@ -45,9 +45,10 @@ export const POST = async (request: NextRequest) => {
 };
 
 // Function to save order details in the database
-const saveOrderDetails = async (formData: any, products: any[]) => {
+const saveOrderDetails = async (alldata: any, products: any[]) => {
   // Save the formData in the Orders table and retrieve the orderId
-  const orderId:any = await saveOrder(formData);
+  const orderId:any = await saveOrder(alldata);
+  console.log(orderId)
 
   // Save the product details in the Order_Items table
   await saveOrderItems(orderId, products);
@@ -56,23 +57,26 @@ const saveOrderDetails = async (formData: any, products: any[]) => {
 };
 
 // Function to save the formData in the Orders table
-const saveOrder = async (formData: any) => {
+const saveOrder = async (alldata: any) => {
   const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns a zero-based value
 const day = currentDate.getDate();
 
 const formattedDate = `${year}-${month}-${day}`;
+ console.log(alldata)
 
   const res = await db.insert(OrderTable).values({
-    total_amount:formData.amount,
-    first_name:formData.data.firstName,
-    last_name:formData.data.lastName,
-    email:formData.data.email,
-    phone_number:formData.data.phone,   
+    total_amount:alldata.amount,
+    first_name:alldata.firstName,
+    last_name:alldata.lastName,
+    email:alldata.email,
+    phone_number:alldata.phone,   
     user_id: cookies().get("user_id")?.value as string,
     order_date:formattedDate,
  }).returning();
+ console.log(res)
+
 };
 
 // Function to save the product details in the Order_Items table

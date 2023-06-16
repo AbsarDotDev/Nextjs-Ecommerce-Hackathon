@@ -10,14 +10,14 @@ export const cartTable = pgTable("cart",{
     quantity: integer("quantity").notNull(),
 })
 export const OrderTable = pgTable("orders",{
-    id: serial("id").primaryKey(),
+    id: serial("order_id").primaryKey(),
     user_id: varchar("user_id",{length:255}).notNull(),
-    order_date: date("user_id").notNull(),
+    order_date: date("order_date").notNull(),
     total_amount: decimal("total_amount").notNull(),
     first_name: varchar("first_name",{length:255}).notNull(),
     last_name: varchar("last_name",{length:255}).notNull(),
     email: varchar("email",{length:255}).notNull(),
-    phone_number: varchar("number",{length:20}).notNull(),
+    phone_number: varchar("phone_number",{length:20}).notNull(),
 })
 export const OrderItemsTable = pgTable("order_items",{
     id: serial("id").primaryKey(),
