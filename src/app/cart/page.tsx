@@ -51,7 +51,6 @@ const getProductsById = async (data: Cart[]) => {
     for (const [index, item] of cart.entries()) {
         total += Number(products[index].price) * item.quantity;
       }
-      localStorage.setItem('totalPrice', total.toFixed(2));
 
     return total.toFixed(2);
   };
