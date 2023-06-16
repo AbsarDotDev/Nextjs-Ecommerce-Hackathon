@@ -59,7 +59,7 @@ const data=await getProductData(user_id!);
 const result=await getProductsById(data);
   return (
     <div>
-      {/* ... */}
+ 
       <div className="flex justify-center">
         <Elements stripe={stripePromise}>
           <CheckoutForm amount={Number(getCartTotal(data,result))} cart={data} userId={user_id!}/>
