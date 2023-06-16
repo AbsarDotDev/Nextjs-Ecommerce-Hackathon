@@ -64,7 +64,6 @@ const month = currentDate.getMonth() + 1; // Adding 1 because getMonth() returns
 const day = currentDate.getDate();
 
 const formattedDate = `${year}-${month}-${day}`;
- console.log(alldata)
 
   const res = await db.insert(OrderTable).values({
     total_amount:alldata.amount,
