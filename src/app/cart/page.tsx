@@ -7,6 +7,8 @@ import { cookies } from "next/headers";
 import { IProduct } from "../page";
 import StripeCheckOutButton from "@/components/Checkout_btn";
 import { StripeProducts } from "@/interfaces/interface";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 const getProductsById = async (data: Cart[]) => {
   if (!data) {
     return []; // Return an empty array if data is undefined
@@ -80,7 +82,9 @@ const Cart = async () => {
 // console.log(data)
 // console.log(result)
   return (
-    <div className="flex mt-10 my-10 px-20 gap-x-10">
+    <div className=" max-h-max">
+    <Header/>
+    <div className="flex my-[100px]  px-20 gap-x-10">
       <div className="container mx-auto ">
         <div className="flex shadow-md ">
           <div className="w-full bg-white px-10 py-10">
@@ -170,6 +174,9 @@ const Cart = async () => {
         {/* <button className="mt-6 w-full rounded-md py-1.5 bg-primary-pink font-semibold hover:bg-primary-lightpink  text-white uppercase">Checkout</button> */}
       </div>
 
+    </div>
+      {/*@ts-ignore */}
+      <Footer/>
     </div>
   );
 };
