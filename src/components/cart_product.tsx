@@ -12,7 +12,7 @@ import { urlForImage } from "@/lib/image";
 
 interface ICart{
   cart:Cart,
-  product:IProduct
+  product:any
 }
 
 const CartProductLayout = ({cart,product}:ICart) => {
@@ -73,7 +73,7 @@ const CartProductLayout = ({cart,product}:ICart) => {
                     <Image src={urlForImage(product.image).url()} width={70} height={60} alt="asdjn" />
                 </div>
                 <div className="flex flex-col items-start justify-between ml-4 flex-grow">
-                    <span className="font-bold text-sm">{product.title}</span>
+                    <span className="font-bold text-sm">{product.name}</span>
                     <button onClick={handleDelete} className="font-semibold text-red-600 hover:text-red-500 text-xs">Remove</button>
                 </div>
             </div>
