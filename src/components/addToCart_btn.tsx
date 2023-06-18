@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IProduct } from "@/app/page";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 interface ProductCardsProps {
   product: IProduct;
 }
@@ -92,9 +93,16 @@ export const AddToCartBtn = ({product}:ProductCardsProps) => {
 
       {/* Add to Cart Button */}
       <Toaster/>
+      <SignedIn>
       <button onClick={handleAddToCart} className="mt-10 text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
         Add to cart
       </button>
+      </SignedIn>
+      <SignedOut>
+      <button disabled onClick={handleAddToCart} className="mt-10 text-white bg-primary-pink hover:bg-primary-lightpink focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Add to cart
+      </button>
+      </SignedOut>
     </div>  </div>
    
   );
