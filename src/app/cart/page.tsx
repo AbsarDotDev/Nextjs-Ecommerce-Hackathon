@@ -78,8 +78,8 @@ const getCartTotal = (cart: Cart[], products: StripeProducts[]) => {
 const Cart = async () => {
   const data: Cart[] = await getProductData();
   const result:StripeProducts[] = await getProductsById(data);
-// console.log(data)
-// console.log(result)
+console.log(data)
+console.log(result)
   return (
     <div className=" max-h-max">
     <Header/>
