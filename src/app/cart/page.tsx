@@ -45,19 +45,17 @@ const getProductsById = async (data: Cart[]) => {
 const getProductData = async () => {
   try {
     const user_id = cookies().get("user_id");
-
+    console.log(user_id?.value)
     const res = await fetch(
-      `http://127.0.0.1:3000/api/cart?user_id=${user_id?.value}`,
+      `http://localhost:3000/api/cart?user_id=${user_id?.value}`,
       {
         method: "GET",
-        mode: "no-cors",
         cache: "no-store",
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-
     if (!res.ok) {
       throw new Error("Failed to fetch the data");
     }
@@ -66,6 +64,7 @@ const getProductData = async () => {
   } catch (err) {
     console.log(err);
   }
+  
 };
 const getCartTotal = (cart: Cart[], products: StripeProducts[]) => {
   let total = 0;

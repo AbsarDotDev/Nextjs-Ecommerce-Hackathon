@@ -38,7 +38,7 @@ export default async function Products({ params }: { params: { product: string }
   return (
     <div>
       <Header />
-      <section className="px-20 max-w-screen-6xl w-full pt-10">
+      <section className=" prefix-px max-w-screen-6xl w-full pt-10">
         <div className="flex flex-col md:flex-row gap-x-10 gap-y-10">
           <div className="flex-1">
             <Image src={urlForImage(data[0].image).url()}

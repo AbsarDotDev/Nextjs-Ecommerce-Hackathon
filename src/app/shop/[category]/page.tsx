@@ -30,8 +30,8 @@ export default async function Prod({ params }: { params: { category: string } })
   return (
     <>
       <Header /> <Breadcrumb />
-      <section className='best-selling mt-20'>
-        <div className='px-20 pt-20 flex flex-col items-start'>
+      <section className='prefix-px max-w-screen-6xl w-full mt-10'>
+        <div className='pt-20 flex flex-col items-start'>
           <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5"> {Empty}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-20 gap-8">

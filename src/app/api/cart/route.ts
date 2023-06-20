@@ -7,6 +7,7 @@ import { v4 as uuid } from "uuid";
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);
   const user_id = searchParams.get("user_id");
+  console.log(searchParams)
   try {
     const res = await db
       .select()
