@@ -79,7 +79,7 @@ export default async function Home() {
 
 
 
-      <section className="px-20 max-w-screen-6xl w-full">
+      <section className="prefix-px max-w-screen-6xl w-full">
 
         <div>
           <h3 className="font-bold text-2xl text-gray-800 leading-5">
@@ -100,16 +100,17 @@ export default async function Home() {
 
       </section>
 
-
+<div className='prefix-px'>
+<Features />
+</div>
 
       {/* Best Selling Section */}
-      <section className='px-20 best-selling mt-20 max-w-screen-6xl w-full'>
-
-
+      <section className='prefix-px mt-20 max-w-screen-6xl w-full'>
+        
           <h3 className="font-bold text-2xl text-gray-800 leading-5 pb-5">
             Best Selling
           </h3>
-          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] custom:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-5 justify-between">
+          <div className="grid grid-cols-[auto] md:grid-cols-[auto,auto] lg:grid-cols-[auto,auto,auto,auto,auto] gap-x-2 gap-y-5 justify-between">
             {pro_data.map((item: any, index: number) => {
               const catItem = cat.find((catItem) => catItem._id === item.category._ref);
               const catName = catItem ? catItem.name : 'Photos'; // Retrieve the category name
@@ -122,14 +123,13 @@ export default async function Home() {
             })}
 
           </div>
-          <button className='bg-gradient-to-l from-primary-lightpink to-primary-pink py-3 px-8 text-white rounded-3xl mt-5'>
-            <Link href={'#'} className=''>
+          <button className='m-[auto] block lg:m-0 bg-gradient-to-l from-primary-lightpink to-primary-pink mt-4 py-3 px-8 text-white rounded-3xl mt-5'>
+            <Link href={'/shop'} className=''>
               View All
             </Link>
           </button>
       </section>
-      <div className='px-20'>
-        <Features />
+      <div className='prefix-px'>
         <Customer_Feedback />
       </div>
       {/*@ts-ignore */}

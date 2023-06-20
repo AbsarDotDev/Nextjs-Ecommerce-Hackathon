@@ -21,7 +21,7 @@ export default async function Shop() {
   return (<>
     <Header />
 
-    <section className="px-20 max-w-screen-6xl w-full">
+    <section className="prefix-px max-w-screen-6xl w-full">
       <div className='' >
         <h3 className="font-bold text-2xl text-gray-800 leading-5">
           Categories

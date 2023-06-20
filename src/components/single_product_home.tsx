@@ -15,7 +15,7 @@ const ProductCardHome = ({ product, catname }: ProductCardsProps) => {
         <> <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 shadow transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
             {/* Product Image */}
             <Link href={`/shop/${catname}/${product.title}`}>
-                <Image className="p-8 rounded-t-lg object-cover h-[350px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
+                <Image className="p-4 lg:p-8 rounded-t-lg object-cover h-[350px]" src={urlForImage(product.image).url()} width={'500'} height={'400'} alt="product image" />
             </Link>
             <div className="px-5 pb-5">
                 {/* Product Title */}
